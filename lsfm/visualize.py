@@ -12,9 +12,11 @@ from matplotlib import pyplot as plt
 
 
 def rasterize_mesh_at_template(mesh, img_shape=(640, 480),
-                               pose_angle_deg=0, shaded=False):
+                               pose_angle_deg=0, shaded=False,
+                               focal_length_mult=1.1):
     camera = perspective_camera_for_template(img_shape,
-                                             pose_angle_deg=pose_angle_deg)
+                                             pose_angle_deg=pose_angle_deg,
+                                             focal_length_mult=focal_length_mult)
     mesh_aligned = AlignmentSimilarity(mesh, load_template()).apply(mesh)
 
     if shaded:
